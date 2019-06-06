@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 'use strict';
 /* eslint-env jquery*/
 
@@ -16,17 +17,26 @@ function fizzbuzz(num) {
   }
 }
 
-$(function() {
+
+function finalResults() {
   $('#number-chooser').submit(event => {
     event.preventDefault();
     $('.js-results').empty();
-    const userNum = $(event.currentTarget).find('#number-choice');
+    const userNum = $('#number-choice').val();
 
     const fBResults = [];
     for(let i = 1; i <= userNum; i++){
       fBResults.push(fizzbuzz(i));
     }
-    const html = fBResults;
-    $('.js-results').html(html);
+    fBResults.forEach(item => {
+     // eslint-disable-next-line indent
+     $('.js-results').append(`<div><span class = 'fizz-buzz-item ${item}'>${item}</span></div>`); 
+    });
+    // const html = fBResults;
+    // $('.js-results').html(html);
+    // console.log(html);
+
   });
-});
+}
+
+$(finalResults);
